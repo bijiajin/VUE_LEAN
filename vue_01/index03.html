@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>练习3-数据与方法</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{a}} -- {{b}}
+		</div>
+		
+		<script type="text/javascript">
+			let data = {
+				a:1,
+				b:""
+				};
+			let vm = new Vue({
+				el:"#app",
+				data:data
+			});
+			
+			// 改变Vue实例对象数据值，页面能够自动刷新数据
+			//data.a = "Hi ..... Vue....";//=> Hi ..... Vue....
+			
+			// 获得这个实例上的 property
+			// 返回源数据中对应的字段
+			//console.log(data.a == vm.a);//=> true
+			
+			// 设置 property 也会影响到原始数据
+			//vm.a = 2;
+			//console.log(data.a);//=> 2
+			
+			
+			// 设置原始数据也会影响到property
+			//data.a = 3;
+			//console.log(vm.a);// => 3
+			
+			//只有当实例被创建时就已经存在于 data 中的 property 才是响应式的，
+			//data.b = 3;// => 报错
+			//vm.b = 3;// => 报错
+			
+			//使用内部属性进行属性修改
+			//vm.$data.a = "12";
+			
+			//实例属性改变监听
+			vm.$watch('a',function(newValue,oldValue){
+				console.log("改变前：",oldValue);
+				console.log("改变后：",newValue);
+			})
+			vm.$data.a = 11;
+			
+		</script>
+	</body>
+</html>

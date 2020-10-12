@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>练习1-本地文件引入</title>
+		<!--  本地引入
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script> 
+		-->
+		
+		<!-- CDN引入 
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		-->
+		
+		 <!-- ES Modules 引入-->
+		<script type="module">
+		  import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
+		</script>
+		<style type="text/css">
+			ul li{
+				list-style-type:none;
+				/* list-style-image: url(img/code.png); */
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><h2>本地文件引入Vue:</h2></li>
+			<li>
+				<ul>
+					<li><h3>1.在官网中下载vue.js文件。</h3></li>
+					<li><h3>2.将下载好的vue.js文件放到项目中。</h3></li>
+					<li><h3>3.在项目页面中使用“script”标签引入vue.js文件</h3></li>
+				</ul>
+			</li>
+			<li></li>
+			<li><h2>CDN引入:</h2></li>
+			<li>
+				<span>
+					&lt;
+					<span>script</span>
+					<span>src</span>
+					=
+					<span>"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>
+					&gt;
+				</span>
+			</li>
+			<li><h2>ES Modules 引入</h2></li>
+			<li>
+				<span>
+					&lt;
+					<span>script</span>
+					<span>type="module"</span>
+					&gt;
+					<span>import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'</span>
+					&lt;
+					<span>/script</span>
+					&gt;
+				</span>
+			</li>
+		</ul>
+	</body>
+</html>
