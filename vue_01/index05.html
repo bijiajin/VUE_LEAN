@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>练习4-VUE模板语法-插值</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.red{
+				color: red;
+			}
+			
+			.blue{
+				color: blue;
+				font-size: 20px;
+				font-weight: bolder;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			{{msg}}<br />
+			<span v-once>{{msg2}}</span><br />
+			<p>Using mustaches: {{ rawHtml }}</p>
+			<p>v-html 指令的使用: <span v-html="rawHtml"></span></p>
+			<div v-bind:class="color">
+				v-bind 指令的使用
+			</div>
+			<p>{{ number + 1 }}</p>
+			<p>{{ ok ? 'YES' : 'NO' }}</p>
+			<p>{{ message.split('').reverse().join('') }}</p>
+			<p v-bind:id="'test_' + id"> ID动态赋值 </p>
+		</div>
+		<script type="text/javascript">
+			let mv = new Vue({
+				el:'#app',
+				data:{
+					msg:"Hell Vue!",
+					msg2:"Hi Vue",
+					rawHtml:'<span style="color:red">This should be Red.</span>',
+					color:'red',
+					number:10,
+					ok:false,
+					message:"vue",
+					id:1
+				}
+			});
+			
+			//在标签中使用v-once，该标签中的值为一次性插值，数据改变，数据不会发生变化
+			mv.$data.msg2 = "Hi Vue ...... !";
+			
+			//v-bind 指令的使用
+			mv.$data.color = "blue";
+		</script>
+	</body>
+</html>

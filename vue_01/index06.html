@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>练习6-VUE模板语法-指令</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-if="seen"> v-if 指令的使用</p>
+			<p><a v-bind:[href]="url"> 动态参数的使用 </a></p>
+			<div v-on:click="click1">
+				<div v-on:click.stop="click2"> 修饰符 stop 禁止事件往上冒泡 </div>
+			</div>
+		</div>
+		
+		<script>
+			let mv = new Vue({
+				el:'#app',
+				data:{
+					msg:'Hell Vue ......!',
+					seen:true,
+					href: 'href',
+					things: 'mouseover',
+					url: 'http://baidu.com',
+					contents: "doSomething"
+				},
+				methods:{
+					click1:function(){
+						console.log("click1........");
+					},
+					click2:function(){
+						console.log("click2........");
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
