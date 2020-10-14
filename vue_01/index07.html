@@ -9,6 +9,19 @@
 				list-style-type:none;
 				/* list-style-image: url(img/code.png); */
 			}
+			.red{
+				color: red;
+			}
+			.classA{
+				color: blue;
+			}
+			.classB{
+				font-size: 20px;
+			}
+			.classC{
+				font-weight: bolder;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -25,16 +38,207 @@
 				<li><h2>v-html</h2></li>
 				<li>
 					<ul>
+						<li v-html="htmlContent"></li>
+					</ul>
+				</li>
+				<li><h2>v-show</h2></li>
+				<li>
+					<ul>
+						<li v-show="vshow">
+							v-show 指令的使用。<br/>
+							<strong>使用方法：</strong>参数为空或者这false标签不会显示，内容不为空或true标签显示。v-show 只是控制标签的display值。
+						</li>
+					</ul>
+				</li>
+				<li><h2>v-if</h2></li>
+				<li>
+					<ul>
+						<li>
+							v-if指令的使用：<br />
+							<strong>使用方法:</strong>参数为空或者这false标签不会显示，内容不为空或true标签显示。v-if在dom渲染时，只显示符合条件的dom标签。
+							<h1 v-if="awesome">Vue is awesome!</h1>
+							<h1 v-else>Oh no 😢</h1>
+						</li>
+					</ul>
+				</li>
+				<li><h2>v-else</h2></li>
+				<li>
+					<ul>
+						<li>
+							v-else指令的使用：<br />
+							<strong>使用方法:</strong>参数为空或者这false标签不会显示，内容不为空或true标签显示。v-if在dom渲染时，只显示符合条件的dom标签。
+							<h1 v-if="ifType == 1">Vue is awesome!</h1>
+							<h1 v-else>Oh no 😢</h1>
+						</li>
+					</ul>
+				</li>
+				<li><h2>v-else-if</h2></li>
+				<li>
+					<ul>
+						<li>
+							v-else-if指令的使用：<br />
+							<strong>使用方法:</strong>参数为空或者这false标签不会显示，内容不为空或true标签显示。v-if在dom渲染时，只显示符合条件的dom标签。
+							<div v-if="type === 'A'">
+							  A
+							</div>
+							<div v-else-if="type === 'B'">
+							  B
+							</div>
+							<div v-else-if="type === 'C'">
+							  C
+							</div>
+							<div v-else>
+							  Not A/B/C
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li><h2>v-for</h2></li>
+				<li>
+					<ul>
+						<li v-for="(item,index) in dataArray" v-bind:key="index">{{item}}</li>
+					</ul>
+				</li>
+				<li><h2>v-on</h2></li>
+				<li>
+					<ul>
+						<li>
+							<!-- 方法处理器 -->
+							<button v-on:click="doThis">方法处理器</button>
+							<!-- 缩写 -->
+							<button @click="doThis">方法处理器(缩写@)</button>
+							<!-- 点击回调只会触发一次 -->
+							<button v-on:click.once="doThis">方法处理器(修饰符)只允许执行一次</button>
+						</li>
+					</ul>
+				</li>
+				<li><h2>v-bind</h2></li>
+				<li>
+					<ul>
+						<li>
+							<!-- 绑定一个 attribute -->
+							<img v-bind:src="imageSrc">
+							<!-- 动态 attribute 名 (2.6.0+) -->
+							<a v-bind:[key]="keyValue">我是一个连接</a>
+							<!-- 缩写 -->
+							<img :src="imageSrc">
+							<!-- class 绑定 -->
+							<div :class="{ red: isRed }">class 绑定</div>
+							<div :class="[classA, classB]">class 绑定</div>
+							<div :class="[classA, { classB: isB, classC: isC }]">class 绑定</div>
+							
+							<!-- style 绑定 -->
+							<div :style="{ fontSize: size + 'px' }">style 绑定</div>
+							<div :style="[styleObjectA, styleObjectB]">style 绑定</div>
+						</li>
+					</ul>
+				</li>
+				<li><h2>v-model</h2></li>
+				<li>
+					<ul>
+						<li>
+							<div>
+								<input v-model="inputMsg" placeholder="edit me">
+								<p>Message is:{{inputMsg}}</p>
+								
+								<span>Multiline message is:</span>
+								<p style="white-space: pre-line;">{{ message }}</p>
+								<br>
+								<textarea v-model="message" placeholder="add multiple lines"></textarea>
+								
+								<br>
+								<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+								<label for="jack">Jack</label>
+								<input type="checkbox" id="john" value="John" v-model="checkedNames">
+								<label for="john">John</label>
+								<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+								<label for="mike">Mike</label>
+								<br>
+								<span>Checked names: {{ checkedNames }}</span>
+								<br>
+								
+								<input type="radio" id="one" value="One" v-model="picked">
+								  <label for="one">One</label>
+								  <br>
+								  <input type="radio" id="two" value="Two" v-model="picked">
+								  <label for="two">Two</label>
+								  <br>
+								  <span>Picked: {{ picked }}</span>
+								  
+								  <br>
+								  <div id="example-5">
+								    <select v-model="selected">
+								      <option disabled value="">请选择</option>
+								      <option>A</option>
+								      <option>B</option>
+								      <option>C</option>
+								    </select>
+								    <span>Selected: {{ selected }}</span>
+								  </div>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li><h2>v-slot</h2></li>
+				<li>
+					<ul>
 						<li></li>
 					</ul>
 				</li>
+				<li><h2>v-pre</h2></li>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+				<li><h2>v-cloak</h2></li>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+				<li><h2>v-once</h2></li>
+				<li>
+					<ul>
+						<li></li>
+					</ul>
+				</li>
+				
 			</ul>
 		</div>
 		<script type="text/javascript">
 			let mv = new Vue({
 				el:'#app',
 				data:{
-					msg:'我是内容哦，Hi Vue.....'
+					msg:'我是内容哦，Hi Vue.....',
+					htmlContent:'<span style="color:red;font-size:20px;">我是html标签串</span>',
+					vshow:true,
+					awesome:'123123',
+					ifType:1,
+					type:'C',
+					dataArray:['one','two','three'],
+					imageSrc:'https://cn.vuejs.org/images/logo.png',
+					key:'href',
+					keyValue:'https://cn.vuejs.org',
+					isRed:true,
+					classA:'classA',
+					classB:'classB',
+					isB:true,
+					isC:true,
+					size:30,
+					styleObjectA:{fontSize: '25px'},
+					styleObjectB:{color: '#FF0000'},
+					inputMsg:'123',
+					message:"",
+					checkedNames:[],
+					picked:'',
+					selected:''
+					
+				},
+				methods:{
+					doThis:function(){
+						console.log("我被点击了！");
+					}
 				}
 			});
 		</script>
