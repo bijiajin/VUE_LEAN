@@ -7,14 +7,85 @@
 	</head>
 	<body>
 		<div id="app">
+			<!-- 使用组件 -->
+			<button-component title="title1"></button-component>
+			<button-component title="title2"></button-component>
 			
+			<!--组件中使用方法-->
+			<button-component-fun title="title-fun1"></button-component-fun>
+			
+			<!-- 组件中调用父组件中的方法 -->
+			<button-component-parent-fun title="title-Pfun1" v-on:clicknow="clickNow"></button-component-parent-fun>
+			
+			<!-- 组件插槽 -->
+			<button-component-slot title="title-Pfun1" v-on:clicknow="clickNow">
+				<h3> 我是插槽内容 。。。。。。</h3>
+			</button-component-slot>
 		</div>
 		
 		<script>
+			//注册一个组件
+			Vue.component('button-component',{
+				props:['title'],
+				data:function(){
+					return {
+						count:0
+					}
+				},
+				template:'<div><h2>Hi.......</h2><button v-on:click="count++"> {{title}} You clicked me {{count}} times.</button></div>'
+			})
+			
+			Vue.component('button-component-fun',{
+				props:['title'],
+				data:function(){
+					return {
+						count:0
+					}
+				},
+				template:'<div><h2>Hi.......</h2><button v-on:click="clickFun"> {{title}} You clicked me {{count}} times.</button></div>',
+				methods:{
+					clickFun:function(){
+						this.count++;
+					}
+				}
+			})
+			
+			Vue.component('button-component-parent-fun',{
+				props:['title'],
+				data:function(){
+					return {
+						count:0
+					}
+				},
+				template:'<div><h2>Hi.......</h2><button v-on:click="clickFun"> {{title}} You clicked me {{count}} times.</button></div>',
+				methods:{
+					clickFun:function(){
+						this.count++;
+						this.$emit('clicknow',this.count);
+					}
+				}
+			})
+			
+			
+			Vue.component('button-component-slot',{
+				props:['title'],
+				data:function(){
+					return {
+						count:0
+					}
+				},
+				template:'<div><h2>Hi.......</h2><button v-on:click="count++"> {{title}} You clicked me {{count}} times.</button><slot></slot></div>'
+			})
+			
 			let mv = new Vue({
 				el:'#app',
 				data:{
 					
+				},
+				methods:{
+					clickNow:function(e){
+						console.log(e);
+					}
 				}
 			});
 		</script>
