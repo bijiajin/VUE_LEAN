@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>练习9-Vue watch监听</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>这是我定义的数组</p>
+			<div>{{this.arr}}</div>
+			<button @click="changeArr">点击这里我就要修改数组里第一个</button>
+			<p>这是我的对象</p>
+			<div>{{this.haha}}</div>
+			<button @click="changeObj">点击这里我就要添加对象的属性</button>
+		</div>
+		
+		<script type="text/javascript">
+			
+			
+			//Vue实例
+			let mv = new Vue({
+				el:'#app',
+				data:{
+					arr: [0, 1, 2, 3, 4, 5, 6],
+					haha: {
+					    name: "123",
+					    age: 12,
+					    story: "从前有座山",    
+					}
+				},
+				watch:{
+				     'arr':{
+				         handler:function(val,oldval){
+				            console.log('修改后',val,'修改前',oldval);
+				         },   
+				     },
+				     'haha':{
+				         handler:function(val,oldval){
+				            console.log('修改后',val,'修改前',oldval);
+				         }
+				     }
+				},
+				methods: {
+				    changeArr() {
+				      this.arr.push('12332') // 添加数组
+				      //console.log("这是修改之后的数组", this.arr);
+				    
+				    },
+				    changeObj() {
+				      this.haha.content = "我是一个小和尚"; // 添加对象
+				      console.log("这是修改之后的对象", this.haha);    
+				    }
+				}
+				
+			});
+		</script>
+	</body>
+</html>
