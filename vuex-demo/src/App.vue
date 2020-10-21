@@ -1,38 +1,18 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-	<!-- <h2>Count:{{this.$store.state.count}}</h2> -->
-	<h2>Count:{{count}}</h2>
-	<button @click="countIncrease">点我自增</button>
-	<button @click="countAddParam">点我自动加100</button>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">VueX</router-link> |
+		<router-link to="/state">state访问状态对象</router-link>|
+		<router-link to="/mutations">Mutations修改状态</router-link>	|
+		<router-link to="/getters">getters计算过滤操作</router-link>
+    </div>
+	<transition name="fade" mode="out-in">
+		<router-view/>
+	</transition>
+    
   </div>
 </template>
-
-<script>
-/* import HelloWorld from './components/HelloWorld.vue' */
-
-export default {
-  name: 'App',
-  /* components: {
-    HelloWorld
-  } */
-  //计算属性
-  computed:{
-	count(){
-		return this.$store.state.count;
-	}
-  },
-  methods:{
-	countIncrease(){
-		this.$store.commit('countIncrease');
-	},
-	countAddParam(){
-		this.$store.commit('countAddParam',100);
-	}
-  }
-}
-</script>
 
 <style>
 #app {
@@ -41,6 +21,33 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+/* 路由过渡动画样式表 */
+.fade-enter {
+  opacity:0;
+}
+.fade-leave{
+  opacity:1;
+}
+.fade-enter-active{
+  transition:opacity .5s;
+}
+.fade-leave-active{
+  opacity:0;
+  transition:opacity .5s;
 }
 </style>
