@@ -2,11 +2,6 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">VueX</router-link> |
-		<router-link to="/state">state访问状态对象</router-link>|
-		<router-link to="/mutations">Mutations修改状态</router-link>	|
-		<router-link to="/getters">getters计算过滤操作</router-link>	|
-		<router-link to="/actions">action异步修改状态</router-link>	|
 		<router-link to="/modules">modules模块组</router-link>
     </div>
 	<transition name="fade" mode="out-in">

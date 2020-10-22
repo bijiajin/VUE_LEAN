@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import State from '@/views/State.vue'
 import Mutations from '@/views/Mutations'
 import Getters from '@/views/Getters'
+import Actions from '@/views/Actions'
+import Modules from '@/views/Modules'
 
 Vue.use(VueRouter)
 
@@ -32,6 +34,16 @@ const routes = [
 	path:'/getters',
 	name:'getters',
 	component:Getters
+  },
+  {
+	path:'/actions',
+	name:'Actions',
+	component:Actions
+  },
+  {
+	path:'/modules',
+	name:'Modules',
+	component:Modules
   }
 ]
 
